@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata: 
-  name: using_yaml
+  name: using-yaml
   labels:
     app: new-app
 
@@ -12,6 +12,7 @@ spec:
     ports:
     - containerPort: 80
       protocol: TCP
+
   - name: tomcat
     image: tomcat:latest
     ports:
