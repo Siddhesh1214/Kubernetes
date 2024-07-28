@@ -1,0 +1,33 @@
+# Creating a POD and a ClusterIP service to expose the POD
+
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    ports:
+    - containerPort: 80
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: cluster-ip
+
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: ClusterIP
